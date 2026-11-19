@@ -13,6 +13,12 @@ public class Generador {
         }
         return lista;
     }
-
+public static int[] generar(int size) {
+    int[] arreglo = new int[size];
+    for (int i = 0; i < size; i++) {
+        arreglo[i] = (int) (Math.random() * size);
+    }
+    return arreglo;
+}
 
 }
