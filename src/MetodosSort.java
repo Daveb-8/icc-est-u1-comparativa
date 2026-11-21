@@ -33,43 +33,58 @@ public class MetodosSort {
   
     public  void mergeSort(int[] arreglo) {
         if (arreglo == null || arreglo.length <= 1) {
-            return;
+            return;             
         }
 
         int medio = arreglo.length / 2;
 
-        // Copiamos las dos mitades a arreglos auxiliares
-        int[] izquierda = Arrays.copyOfRange(arreglo, 0, medio);
-        int[] derecha = Arrays.copyOfRange(arreglo, medio, arreglo.length);
+        // Copiamos las dos mitades en arreglos auxiliares
+        int[] izquierda = new int[medio];
+        int[] derecha = new int[arreglo.length - medio];
 
+
+        for(int i = 0; i < medio; i++) {
+                izquierda[i] = arreglo[i];
+        }
+        for(int i = medio; i < arreglo.length; i++) {
+                 derecha[i-medio] = arreglo[i];
+            
+        }
         mergeSort(izquierda);
-        mergeSort(derecha);
-
-        mezclar(arreglo, izquierda, derecha);
+        mergeSort(derecha);  
+        merge(izquierda, derecha, arreglo);
     }
 
-    private static void mezclar(int[] destino, int[] izquierda, int[] derecha) {
-        int i = 0; // índice en 'izquierda'
-        int j = 0; // índice en 'derecha'
-        int k = 0; // índice en 'destino'
+    private static void merge(int[] izquierda, int[] derecha, int[] arreglo) {
+        //indices
+        int i = 0; 
+        int izq = 0; 
+        int drch = 0;
 
-        while (i < izquierda.length && j < derecha.length) {
-            if (izquierda[i] <= derecha[j]) {
-                destino[k++] = izquierda[i++];
+        while (izq < izquierda.length && drch < derecha.length) {
+            if (izquierda[izq] <= derecha[drch]) {
+                arreglo[i] = izquierda[izq];
+                i++;
+                izq++;
             } else {
-                destino[k++] = derecha[j++];
+                arreglo[i] = derecha[drch];
+                i++;
+                drch++;
             }
         }
-
-        while (i < izquierda.length) {
-            destino[k++] = izquierda[i++];
+        while (izq < izquierda.length) {
+            arreglo[i] = izquierda[izq];
+            i++;
+            izq++;
         }
-
-        while (j < derecha.length) {
-            destino[k++] = derecha[j++];
+        while (drch < derecha.length) {
+            arreglo[i] = derecha[drch];
+            i++;
+            drch++;
         }
     }
 }
+
 
 
 

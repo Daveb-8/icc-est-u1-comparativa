@@ -40,6 +40,21 @@ public class App {
         int[] v3s2 = lista2.clone();
         int[] v3s3 = lista3.clone();
 
+        // V4 Array.sort con COmparator
+        // tipo de dato: <Integer>
+        Integer[] v4s1 = new Integer[lista1.length];
+        for (int i = 0; i < lista1.length; i++) {   
+             v4s1[i] = lista1[i];                                
+        }
+        Integer[] v4s2 = new Integer[lista2.length];
+        for (int i = 0; i < lista2.length; i++) {   
+             v4s2[i] = lista2[i];    
+        }
+        Integer[] v4s3 = new Integer[lista3.length];
+        for (int i = 0; i < lista3.length; i++) {   
+             v4s3[i] = lista3[i];    
+        }
+
         //Ordenamiento y mediciones (benchkmark) dentro de Runnable
         Results rm1s1 = Benchmark.medir( () -> algoritmo.bubbleSort(v1s1), "Burbuja", "10.000");
         Results rm1s2 = Benchmark.medir( () -> algoritmo.bubbleSort(v1s2), "Burbuja", "50.000");
@@ -53,7 +68,16 @@ public class App {
         Results rm3s2 = Benchmark.medir( () -> Arrays.sort(v3s2), "Arraysort", "50.000");
         Results rm3s3 = Benchmark.medir( () -> Arrays.sort(v3s3), "Arraysort", "100.000");
 
+        Results rm4s1 = Benchmark.medir( () -> Arrays.sort(v4s1, (a,b) -> Integer.compare(a,b)), "Arraysort con Comparator", "10.000");
+        Results rm4s2 = Benchmark.medir( () -> Arrays.sort(v4s2, (a,b) -> Integer.compare(a,b)), "Arraysort con Comparator", "50.000");
+        Results rm4s3 = Benchmark.medir( () -> Arrays.sort(v4s3, (a,b) -> Integer.compare(a,b)), "Arraysort con Comparator", "100.000");
+
+
         // Imprimir cada uno de los resultados
+        /*System.out.println("Java: " + System.getProperty("java.version"));
+          System.out.println("SO: " + System.getProperty("os.name") + " " + System.getProperty("os.arch"));
+          System.out.println("Procesador (núcleos lógicos): " + Runtime.getRuntime().availableProcessors());
+        */
         System.out.println(rm1s1);
         System.out.println(rm1s2);
         System.out.println(rm1s3);
@@ -63,6 +87,9 @@ public class App {
         System.out.println(rm3s1);
         System.out.println(rm3s2);
         System.out.println(rm3s3);
+        System.out.println(rm4s1);
+        System.out.println(rm4s2);
+        System.out.println(rm4s3);
 
 
         /*  long nanoTime = System.nanoTime();

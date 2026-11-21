@@ -1,0 +1,3 @@
+# Ignorar archivos compilados de Java
+*.class
+bin/
