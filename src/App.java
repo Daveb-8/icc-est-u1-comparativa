@@ -5,26 +5,90 @@ import java.util.List;
 public class App {
     public static void main(String[] args) throws Exception {
      
-        //long nanoTime = System.nanoTime();
-        //long currentTimeMillis = System.currentTimeMillis();
-        //System.out.println("Nano Time: " + nanoTime);
-        //System.out.println("Current Time" + currentTimeMillis);
+        // instanciar objetos de las clases necesarias
+        Generador generador = new Generador();
+        Benchmark benchmark = new Benchmark();
+        MetodosSort algoritmo = new MetodosSort();
+       
+        /*
+        * 1 = List <List<Integer>> listas = List.of(lista,1lista2,lista2);
+        * 2 = List<Integer>[] listas = new List<Integer>[]{lista1};
+        */ 
 
-        // operaciones para guardar funciones dentro de variables
-        // Se guarda en una variable una funcion a ejecutar (lambda)
-        // La funcion solo se ejecuta no puede retornar nada
-        //Runnable x = () -> System.out.println("Ejectuando Tarea");
-        // Callable <T> X es para que esa funcion retorne algo
-        //System.out.println("Ejecucion de la funcion Runnable");
-        //x.run();
+        // Generar las muestras base con los tres lengths exigidos
+        int[] lista1 = generador.generar(10000);
+        int[] lista2 = generador.generar(50000);
+        int[] lista3 = generador.generar(100000);
 
-        //mas lineas de codigo en la variable
-        //Runnable y = () -> {
-        //    System.out.println("Ejectuando Tarea 1");
-        //    System.out.println("Ejectuando Tarea 2");
-        //};
-        //System.out.println("Ejecucion de la funcion Runnable");
-        //y.run();
+        /* Generar copia de los arreglos para cada caso
+        *  List<Integer> list2c1 = list2.clone();
+        *  List<Integer> list2cri1 = Arrays.copyOf(list2,list2.size());
+        */
+
+        // V1 Bubble Sort
+        int[] v1s1 = lista1.clone();
+        int[] v1s2 = lista2.clone();
+        int[] v1s3 = lista3.clone();
+
+        // V2 Merge Sort
+        int[] v2s1 = lista1.clone();
+        int[] v2s2 = lista2.clone();
+        int[] v2s3 = lista3.clone();
+
+        // V3 Array.sort
+        int[] v3s1 = lista1.clone();
+        int[] v3s2 = lista2.clone();
+        int[] v3s3 = lista3.clone();
+
+        //Ordenamiento y mediciones (benchkmark) dentro de Runnable
+        Results rm1s1 = Benchmark.medir( () -> algoritmo.bubbleSort(v1s1), "Burbuja", "10.000");
+        Results rm1s2 = Benchmark.medir( () -> algoritmo.bubbleSort(v1s2), "Burbuja", "50.000");
+        Results rm1s3 = Benchmark.medir( () -> algoritmo.bubbleSort(v1s3), "Burbuja", "100.000");
+
+        Results rm2s1 = Benchmark.medir( () -> algoritmo.mergeSort(v2s1), "Mergesort", "10.000");
+        Results rm2s2 = Benchmark.medir( () -> algoritmo.mergeSort(v2s2), "Mergesort", "50.000");
+        Results rm2s3 = Benchmark.medir( () -> algoritmo.mergeSort(v2s3), "Mergesort", "100.000");
+
+        Results rm3s1 = Benchmark.medir( () -> Arrays.sort(v3s1), "Arraysort", "10.000");
+        Results rm3s2 = Benchmark.medir( () -> Arrays.sort(v3s2), "Arraysort", "50.000");
+        Results rm3s3 = Benchmark.medir( () -> Arrays.sort(v3s3), "Arraysort", "100.000");
+
+        // Imprimir cada uno de los resultados
+        System.out.println(rm1s1);
+        System.out.println(rm1s2);
+        System.out.println(rm1s3);
+        System.out.println(rm2s1);
+        System.out.println(rm2s2);
+        System.out.println(rm2s3);
+        System.out.println(rm3s1);
+        System.out.println(rm3s2);
+        System.out.println(rm3s3);
+
+
+        /*  long nanoTime = System.nanoTime();
+            long currentTimeMillis = System.currentTimeMillis();
+            System.out.println("Nano Time: " + nanoTime);
+            System.out.println("Current Time" + currentTimeMillis);
+        *?
+
+        /*  operaciones para guardar funciones dentro de variables
+            Se guarda en una variable una funcion a ejecutar (lambda)
+            La funcion solo se ejecuta no puede retornar nada
+            Runnable x = () -> System.out.println("Ejectuando Tarea");
+            Callable <T> X es para que esa funcion retorne algo
+            System.out.println("Ejecucion de la funcion Runnable");
+            x.run();
+        */
+
+        /*  mas lineas de codigo en la variable
+
+            Runnable y = () -> {
+                System.out.println("Ejectuando Tarea 1");
+                System.out.println("Ejectuando Tarea 2");
+            };
+            System.out.println("Ejecucion de la funcion Runnable");
+            y.run();
+        */
 
         //List<Integer> list = new ArrayList<>();
         //MetodosOrd m0 = new MetodosOrd();
@@ -34,9 +98,6 @@ public class App {
         //Runnable burbujaOrden = () -> m0.burbuja(list); //se guarda la funcion dentro de variable pero no se ejecuta hasta llamarla
         //burbujaOrden.run();
 
-        Generador g = new Generador();
-        Benchmark b = new Benchmark();
-       
         
         //List<Integer> lista = g.generate(100000);
         //System.out.println(lista);
@@ -54,47 +115,6 @@ public class App {
         // 100000
         //List<Integer> insertionsort = g.generate(100000);
 
-        //1 = List <List<Integer>> listas = List.of(lista,1lista2,lista2);
-        //2 = List<Integer>[] listas = new List<Integer>[]{lista1};
-        MetodosSort m = new MetodosSort();
-        // Crear las listas de datos
-        int[] listaoriginals1 = g.generar(10000);
-        int[] listaoriginals2 = g.generar(50000);
-        int[] listaoriginals3 = g.generar(100000);
-
-        System.out.println("Caso Bubble sort");
-        int[] listacopias1 = listaoriginals1;
-        m.bsort(listacopias1);
-        int[] listacopias2= listaoriginals2;
-        m.bsort(listacopias2);
-        int[] listacopias3 = listaoriginals3;
-        m.bsort(listacopias3);
-
-        System.out.println("Caso MergeSort");
-        int[] listacopias4 = listaoriginals1;
-        m.mSort(listacopias4);
-        int[] listacopias5 = listaoriginals1;
-        m.mSort(listacopias5);
-        int[] listacopias6 = listaoriginals1;
-        m.mSort(listacopias6);
-
-        //List<Integer> list2c1 = list2.clone();
-        //List<Integer> list2cri1 = Arrays.copyOf(list2,list2.size());
-
-        Results resultaM1S1 = Benchmark.medir( () -> b.mSort(listacopias1), "Burbuja", "10.000");
-        Results resultaM1S2 = Benchmark.medir( () -> b.mSort(listacopias2), "Burbuja", "50.000");
-        Results resultaM1S3 = Benchmark.medir( () -> b.mSort(listacopias3), "Burbuja", "100.000");
-
-        Results resultaM2S1 = Benchmark.medir( () -> b.mSort(listacopias4), "Burbuja", "10.000");
-        Results resultaM2S2 = Benchmark.medir( () -> b.mSort(listacopias5), "Burbuja", "50.000");
-        Results resultaM2S3 = Benchmark.medir( () -> b.mSort(listacopias6), "Burbuja", "100.000");
-
-        System.out.println(resultaM1S1);
-        System.out.println(resultaM1S2);
-        System.out.println(resultaM1S3);
-        System.out.println(resultaM2S1);
-        System.out.println(resultaM2S2);
-        System.out.println( resultaM2S3);
 
 
 

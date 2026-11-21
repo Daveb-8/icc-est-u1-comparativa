@@ -10,14 +10,8 @@ public class Benchmark {
         // retornar el tiempo de duracion 
         Results results = new Results(nombre, (tF - tA), sample);
         return results;
-
-
-
     }
 
-    public Object mSort(int[] listacopias4) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mSort'");
-    }   
+
 
 }

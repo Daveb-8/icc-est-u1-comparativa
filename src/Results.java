@@ -38,7 +38,7 @@ public class Results {
     public String toString() {
 
         double segundos = duration/1_000_000_000.0;
-        return "Results [functionName " + functionName + " ,duracion en ns =" + duration + " ,duracion en s =" + segundos + " , sample=" + sample + "]";
+        return "Results [Metodo Sort: " + functionName + " ,duracion: " + duration + "ns, "  + segundos + "s" + " ,sample: " + sample + "]";
     }
 
 
