@@ -15,7 +15,7 @@
 ## Objetivo
 - Lograr implementar los metodos para generar listas/arreglos con datos [int] aleatorios y el uso del System.nanoTime() para aproximar la duracion de ejecucion de algoritmos de ordenamiento dentro de un entorno especifico.
 
-# COmandos de copliacion y ejecucion
+# Comandos de copliacion y ejecucion
 Desde el IDE:
 1. Entrar a [Visual Studio] -> abrir carpeta proyecto
 2. Seleccionar la carpeta `src/`
@@ -40,10 +40,10 @@ icc-est-u1-comparativa/
 
 | Clase | Explicacion |
 |-------|-------------|
-|`Generador.java`| Genera arreglo de n numeros de tipo entero [int] entre el 0 y n cantidad elegida por 
-                    el usuario. Si n=0 genera arreglo vacio y si n<0 genera igual un arreglo vacio |
+|`Generador.java`| Genera arreglo de n numeros de tipo entero [int] entre el 0 y n cantidad elegida por |
+|                |    el usuario. Si n=0 genera arreglo vacio y si n<0 genera igual un arreglo vacio |
 |`Benchmark.java`| tiene metodo que usa System.nanoTime() para medir el tiempo de ejecucion de cualquier 
-                    variable de tipo Runnable |
+|                    variable de tipo Runnable |
 |`MetodosSort.java`| Los metodos de ordenamiento BubbleSort(V1) y MergeSort(V2) estan implementados |
 |`Results.java`| es el modelo de la interfaz para observar los resultados | 
 |`App.java`| aqui se ejectuan e imprime la lista de los resultados |
@@ -58,7 +58,7 @@ Se usa `Benchmark.medir(Runnable)` para medir y ejectuar el metodo de ordenamien
 ## Resultados
 
 | Sample | Metodo | Tiempo en milisegundos | Resultado obtenido | 
-|---|-----------|--------------------|--------------------|--------|
+|--------|--------|------------------------|--------------------|
 | 10 000 | V1 BubbleSort | 124.8854ms | ![alt text](evidencias/assets/v1s1.png) | 
 | 50 000 | V1 Bubble Sort | 5023.3628ms | ![alt text](evidencias/assets/v1s2.png)  | 
 | 100 000 | V1 BubbleSort | 22644.6220ms | ![alt text](evidencias/assets/v1s3.png) |
