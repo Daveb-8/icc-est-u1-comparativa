@@ -3,8 +3,8 @@
 ## Datos generales
 - **Autor:** David Baroja
 - **Asignatura:** Estructura de Datos
-- **Repositorio:** icc-est-u1-comparativa
-- **Ultima Fecha Modificacion:** 21/11/2026
+- **Práctica:** PL1.1 Analisis Algoritmos de Ordenamiento
+- **Ultima Fecha Modificacion:** 22/11/2026
 
 ## Entorno
 - **Versión del JDK:** 25.0.4.1 
@@ -13,7 +13,7 @@
 - **Memoria Ram:** 12gb
 
 ## Objetivo
-- Lograr implementar los metodos para generar listas/arreglos con datos [int] aleatorios y el uso del System.nanoTime() para aproximar la duracion de ejecucion de algoritmos de ordenamiento dentro de un entorno especifico.
+- Lograr implementar los metodos para generar listas/arreglos con datos [int] aleatorios, asi como el uso de `System.nanoTime()` para aproximar la duracion de ejecucion de algoritmos de ordenamiento dentro de un entorno especifico.
 
 # Comandos de copliacion y ejecucion
 Desde el IDE:
@@ -24,7 +24,8 @@ Desde el IDE:
 ## Estructura del Proyecto
 ```
 icc-est-u1-comparativa/
-- .vscode
+- .vscode/
+- bin/
 - evidencias/
 - src/
     - App.java
@@ -32,7 +33,7 @@ icc-est-u1-comparativa/
     - Generador.java
     - MetodosSort.java
     - Results.java
-- gitingore
+- .gitingore
 - Investigacion.md
 - README.md
 ```
@@ -40,20 +41,16 @@ icc-est-u1-comparativa/
 
 | Clase | Explicacion |
 |-------|-------------|
-|`Generador.java`| Genera arreglo de n numeros de tipo entero [int] entre el 0 y n cantidad elegida por |
-|                |    el usuario. Si n=0 genera arreglo vacio y si n<0 genera igual un arreglo vacio |
+|`Generador.java`| Genera arreglo de n numeros de tipo entero [int] entre el 0 y n cantidad elegida por 
+ el usuario. Si n=0 genera arreglo vacio y si n<0 genera igual un arreglo vacio |
 |`Benchmark.java`| tiene metodo que usa System.nanoTime() para medir el tiempo de ejecucion de cualquier 
-|                    variable de tipo Runnable |
+ variable de tipo Runnable |
 |`MetodosSort.java`| Los metodos de ordenamiento BubbleSort(V1) y MergeSort(V2) estan implementados |
 |`Results.java`| es el modelo de la interfaz para observar los resultados | 
 |`App.java`| aqui se ejectuan e imprime la lista de los resultados |
 
 El fujo de ejecucion es: Se genera un arreglo con n datos `Generador`, luego se crea una copia `.clone()`
 Se usa `Benchmark.medir(Runnable)` para medir y ejectuar el metodo de ordenamiento. Este devuelve `Results` y se imprime la lista.
-
-## Explicacion sobre BENCHMARK
-
-
 
 ## Resultados
 
@@ -75,6 +72,6 @@ Se usa `Benchmark.medir(Runnable)` para medir y ejectuar el metodo de ordenamien
 **Tabla completa de los 12 Resultados:** ![alt text](evidencias/assets/Tabla_12_resultados.png)
 
 ## Conclusiones
-- Podemos concluir que la duracion de ejecucion utilizando cualquier metodo de ordenamiento sera directamente proporcional al numero de de datos n del arreglo/lista en cuestion. Ademas, se pudo apreciar con mayor claridad que algoritmos externos como el MergeSort tienen un tiempo de duracion mucho mas bajo que algoritmos comparativos como BubbleSort. El tiempo de duracion de bubbleort con un arreglo de 100 000 es 5 veces mayor que Mergesort.
-- El metodo utilizado System.nanoTime() para el benchmarking tiene una limitacion mencionar. Y es que depende del entorno de donde se ejecutara el codigo. por lo tanto, este metodo no permite afirmar con completa certeza si un algoritmo/metodo sea mas rapido que otro.
-- A partir de los 50 000 elementos, V4 (Integer[]) fue mucho más lento que V3 (int[]): 4 veces mas lento con 50 000 (45.96 ms frente a 9.97 ms) y 6 veces mas lento con 100 000 (155.07 ms frente a 23.39 ms). Una explicación probable es que `Integer[]` guarda referencias a objetos en lugar de datos primitivos , lo que resulta en más memoria, acceso indirecto a cada dato y una llamada al comparador en cada comparación. Además, la biblioteca usa un algoritmo distinto para objetos que para primitivos. Por eso el resultado corresponde a varios factores que afectan la velocidad de ejecucion.
+- Podemos concluir que la duracion de ejecucion utilizando cualquier metodo de ordenamiento sera directamente proporcional al numero de datos (n) del arreglo/lista en cuestion. Ademas, se pudo demostrar que algoritmos directos(avanzados) como el MergeSort tienen un tiempo de duracion mucho mas bajo con mayor cantidad de datos, comparado com algoritmos directos como BubbleSort. El tiempo de duracion de bubblesort con un arreglo de 100 000 es 5 veces mayor que Mergesort.
+- El metodo utilizado System.nanoTime() para el benchmarking tiene una limitacion a mencionar. Y es que depende del entorno de donde se ejecutara el codigo. Por conecuencia, este metodo no permite afirmar con completa certeza si un algoritmo/metodo es mas rapido que otro.
+- A partir de los 50 000 elementos, V4 (Integer[]) fue mucho más lento que V3 (int[]). Fue 4 veces mas lento con 50 000 (n) (45.96 ms frente a 9.97 ms) y 6 veces mas lento con 100 000 (n) (155.07 ms frente a 23.39 ms). Una explicación probable es que `Integer[]` guarda referencias a objetos en lugar de datos primitivos , lo que resulta en más memoria, acceso indirecto a cada dato y una llamada al comparador en cada comparación. Además, la biblioteca usa un algoritmo distinto para objetos que para primitivos. Por lo tanto, la velocidad de ejecucion se ve afectada por varios factores de los tipos de datos y allgoritmos (metodos) utilizados dentro de las interfaces.
