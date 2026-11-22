@@ -12,7 +12,7 @@ Este proceso de dividir y fusionar se realiza por medio de recursividad (llamar 
 |--------|---------|
 |Algoritmo | Merge Sort |
 | Variante | Clasica, de arriba hacia abajo. Copia el arreglo original en dos hasta llegar a un 
-subarreglo de un elemento y luego fusiona los subarreglos, ordenandolos de menor a mayor.|     
+||subarreglo de un elemento y luego fusiona los subarreglos, ordenandolos de menor a mayor.|     
 | Clase	 | MetodosSort |
 | Ruta | src/MetodosSort.java |
 | Métodos |	public void mergeSort(int[] arreglo) y public static void merge(int[] izquierda, int[] derecha, int[] arreglo) |
