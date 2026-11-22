@@ -42,9 +42,9 @@ icc-est-u1-comparativa/
 | Clase | Explicacion |
 |-------|-------------|
 |`Generador.java`| Genera arreglo de n numeros de tipo entero [int] entre el 0 y n cantidad elegida por 
- el usuario. Si n=0 genera arreglo vacio y si n<0 genera igual un arreglo vacio |
+el usuario. Si n=0 genera arreglo vacio y si n<0 genera igual un arreglo vacio |
 |`Benchmark.java`| tiene metodo que usa System.nanoTime() para medir el tiempo de ejecucion de cualquier 
- variable de tipo Runnable |
+variable de tipo Runnable |
 |`MetodosSort.java`| Los metodos de ordenamiento BubbleSort(V1) y MergeSort(V2) estan implementados |
 |`Results.java`| es el modelo de la interfaz para observar los resultados | 
 |`App.java`| aqui se ejectuan e imprime la lista de los resultados |
